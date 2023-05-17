@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\change_form.js",
+      "PackagePath": "staticwebassets\\change_form.js"
+    },
+    {
+      "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\global_css.css",
+      "PackagePath": "staticwebassets\\global_css.css"
+    },
+    {
+      "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\page_css.css",
+      "PackagePath": "staticwebassets\\page_css.css"
+    },
+    {
+      "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\start.html",
+      "PackagePath": "staticwebassets\\start.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.非課程 用asp.net core 建立報表.props",
+      "PackagePath": "build\\非課程 用asp.net core 建立報表.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.非課程 用asp.net core 建立報表.props",
+      "PackagePath": "buildMultiTargeting\\非課程 用asp.net core 建立報表.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.非課程 用asp.net core 建立報表.props",
+      "PackagePath": "buildTransitive\\非課程 用asp.net core 建立報表.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.非課程 用asp.net core 建立報表.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

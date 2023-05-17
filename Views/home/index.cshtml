@@ -1,0 +1,93 @@
+@{
+    string appTitle = "選項報表選項";
+    string radio = "False";
+    string startdate = "False";
+    string enddate = "False";
+    
+}
+@functions {
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@appTitle</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function GetMessage() {
+            document.getElementById("ptext").innerText = "new";
+        }
+        function jsShow() {
+            alert("jsShow");
+        }
+        function gotoReport() {
+            try {
+                radio = document.querySelector('[name=report]:checked').id;
+            }
+            catch (e) {
+                document.getElementById("printerror").innerText = "You need select radio!";
+            }
+            startdate = document.getElementById("startday").value;
+            enddate = document.getElementById("endday").value;
+            if (startdate == "" || enddate == "") {
+                document.getElementById("printerror").innerHTML = "You need select start date and end date";
+                throw 204
+            } else if (startdate > enddate) {
+
+                document.getElementById("printerror").innerHTML = "You need select non-error date value";
+                throw 204
+            }
+            //location.href = '@Url.Action("ReportData", "Report", new { type = "sale" })'; // 這是一個變數的時候可以使用的程式碼
+            // location.href = '@Url.Action("ReportData", "Report", new { type = radio, startDate = startdate, endDate = enddate})'; // 找得到C#的變數
+            // document.getElementById("hiddenfield1").value = radio;
+            location.href = "/ReportInput?type=" + radio + "&startdate=" + startdate + "&enddate=" + enddate
+        }
+    </script>
+    <script language="C#" runat="server">
+        void ReportClicked(object sender, EventArgs e)
+        {
+            hiddenfield1.value = document.querySelector('[name=report]:checked').id;
+        }
+    </script>
+    <link rel="stylesheet" href='page_css.css' type="text/css"/>
+</head>
+
+<body style="font-size: 30px;">
+    <div style="color: red;">
+        <span style="font-size: 60px;">以報表形式顯示日期中的數量及金額</span><br /><br />
+        <span>在下面的選項選擇要查看的項目和日期，會顯示出同時間擁有的單據數量和金額</span>
+    </div>
+    <form class="flex">
+    <div>
+        <input type="radio" name="report" id="saler" name="sale-report">銷售訂單報表</input>
+        <input type="radio" name="report" id="purchase" name="purchase-report">採購訂單報表</input>
+        <input type="radio" name="report" id="outside" name="outside-report">加工單報表</input>
+    </div>
+    <!--input type="button" onclick="GetMessage()" value="Get Message" />
+    <p id="ptext"></p>
+    <input type="button" value="Message" id="htmlbutton" onclick="jsShow()" /-->
+    <div style="padding-top: 40px;">
+        <label for="start">開始日期:</label>
+        <input type="date" id="startday" name="input-start" /><br>
+        <label for="end">結束日期:</label>
+        <input type="date" id="endday" name="input-end" />
+    </div>
+    <div style="padding-top: 40px;" >
+        <input type="button" value="確認"  style="font-size:30px" onclick="gotoReport()" name="Button"/>
+        <label id = "printerror"></label>
+    </div>
+    <div>
+        <asp:HiddenField id="hiddenfield1" runat="server"/>
+        <asp:HiddenField id="hiddenfield2" runat="server"/>
+        <asp:HiddenField id="hiddenfield3" runat="server"/>
+    </div>
+    <!--form runat="server">
+        <asp:Button id=Button1 Text="Clickbutton" οnclick="ReportClicked" runat="server" />
+    </form-->
+    </form>
+
+</body>
+
+</html>
