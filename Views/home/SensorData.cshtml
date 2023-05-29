@@ -1,0 +1,137 @@
+@using IActionResultExample.Models
+
+<html>
+
+  <head>
+
+    <title>Report</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+
+    <script>
+        $(document).ready(function() {  //文件完成後再執行
+        function DisplayMqttData(){
+          $.ajax({
+            url: '@Url.Action("getMqttData", "HomeController")',
+            data: {"type": '@ViewData["thisreport"]'},
+            cache: false,
+            type: "POST",
+
+            success: function (data, textStatus, jqXHR){
+              //$.each(result, function(index, element){
+              //  $('#infraredView').append(
+              //    
+              //  );
+              //  console.log("SUCCESS" + element);
+              //});
+              console.log("SUCCESS  ");
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+              console.log("FAILED");
+            }
+          });
+        }
+
+        setInterval(function(){
+          DisplayMqttData();
+        }, 1000);
+        });
+
+    </script>
+    <script>
+        function gotoIndex(){
+            location.href = "/"
+        }
+    </script>
+  </head>
+  <body>
+    <div onclick="gotoIndex()">回到開始頁面</div>
+
+    @if ( (string?)ViewData["thisreport"] == "Infrared"){  // 這裡的[]打錯字不會報錯
+        <h2 style="font-size: 40px;">紅外線感測資料</h2>
+        <form id="form_infrared" style="width:100%; position:absolute; height:500px;">
+            <p>紅外線資料</p>
+            <div id="infraredCount" style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>紅外線資料左</span>
+              
+            </div>
+            <div style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>紅外線資料右</span>
+              <textarea id="infraredView" name="mytext"
+                rows="100"
+                cols="40"
+                required>
+                mtqq資料
+              </textarea>
+            </div>
+        </form>
+
+    }
+    else if ( (string?)ViewData["thisreport"] == "InfraredUltrasound"){
+        <h2 style="font-size: 40px;">紅外線超音波感測資料</h2>
+        <form id="form_infrared_ultrasound" style="width:100%; position:absolute; height:500px;">
+            <p>紅外線超音波資料</p>
+            <div style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>紅外線超音波資料左</span>
+            </div>
+            <div style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>紅外線超音波資料右</span>
+              <textarea name="mytext"
+                rows="100"
+                cols="40"
+                required>
+                mtqq資料
+              </textarea>
+            </div>
+        </form>
+
+    }
+    else if ( (string?)ViewData["thisreport"] == "Shork"){
+        <h2 style="font-size: 40px;">震動感測資料</h2>
+
+        <form id="shork" style="width:100%; position:absolute; height:500px;">
+            <p>震動資料</p>
+            <div style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>震動資料左</span>
+            </div>
+            <div style="width:40%;
+                        height:100%;
+                        display: flex;
+                        float:left;
+                        position: relative;">
+              <span>震動資料右</span>
+              <textarea name="mytext"
+                rows="100"
+                cols="40"
+                required>
+                mtqq資料
+              </textarea>
+            </div>
+        </form>
+    }
+    
+  </body>
+
+</html>

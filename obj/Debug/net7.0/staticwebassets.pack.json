@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\global_css.css"
     },
     {
+      "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\mqtt.html",
+      "PackagePath": "staticwebassets\\mqtt.html"
+    },
+    {
       "Id": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\wwwroot\\page_css.css",
       "PackagePath": "staticwebassets\\page_css.css"
     },

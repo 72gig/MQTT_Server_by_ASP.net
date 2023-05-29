@@ -170,6 +170,22 @@ namespace IActionResultExample.Controllers
 
             return View(result);
         }
+
+
+        // 在前端顯示資料
+        [Route("ReportSensor/{type?}")]
+        public IActionResult SensorData([FromQuery]string? type){
+            
+            ViewData["thisreport"] = type;
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult getMqttData(string type){
+            Console.WriteLine(type);
+            return Json(type);
+        }
+
     }
 
 }

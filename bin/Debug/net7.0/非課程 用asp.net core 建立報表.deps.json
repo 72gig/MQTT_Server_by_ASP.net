@@ -9,7 +9,8 @@
       "非課程 用asp.net core 建立報表/1.0.0": {
         "dependencies": {
           "MQTTnet": "4.2.0.706",
-          "Microsoft.Data.SqlClient": "5.1.1"
+          "Microsoft.Data.SqlClient": "5.1.1",
+          "Npgsql": "7.0.4"
         },
         "runtime": {
           "非課程 用asp.net core 建立報表.dll": {}
@@ -119,6 +120,7 @@
           }
         }
       },
+      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {},
       "Microsoft.Identity.Client/4.47.2": {
         "dependencies": {
           "Microsoft.IdentityModel.Abstractions": "6.24.0"
@@ -242,6 +244,17 @@
           "lib/net7.0/MQTTnet.dll": {
             "assemblyVersion": "4.2.0.706",
             "fileVersion": "4.2.0.706"
+          }
+        }
+      },
+      "Npgsql/7.0.4": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Npgsql.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.4.0"
           }
         }
       },
@@ -463,6 +476,13 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.1.0",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.1.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+    },
     "Microsoft.Identity.Client/4.47.2": {
       "type": "package",
       "serviceable": true,
@@ -553,6 +573,13 @@
       "sha512": "sha512-WvGqQL9PbnG8wl/uMYTVRYXiZfiJE15M6RYNboGaFMSqPNPWy3iNq0bDPFwKgKFpbriNlSsSXOZQFMvpr5N62A==",
       "path": "mqttnet/4.2.0.706",
       "hashPath": "mqttnet.4.2.0.706.nupkg.sha512"
+    },
+    "Npgsql/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7UVPYy2RP0ci04PED1tc9ZCaTw/DfSdSkLiGEFCAvwMwsgA/bAluj1liNzP1IpN0MFofnOF0cm1zJfmbEuCehg==",
+      "path": "npgsql/7.0.4",
+      "hashPath": "npgsql.7.0.4.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/6.0.1": {
       "type": "package",
