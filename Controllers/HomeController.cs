@@ -186,7 +186,7 @@ namespace IActionResultExample.Controllers
         [HttpPost]
         public string getMqttData(string type){
             //預定連線到sql 取得資料後顯示到前端
-            getSqlData();
+            //getSqlData();
 
             List<string> data_ids = new List<string>() {"ABC","BCD"};
             //Console.WriteLine(type);
@@ -199,9 +199,6 @@ namespace IActionResultExample.Controllers
             return JsonConvert.SerializeObject(returnValue);
         }
 
-        private string getSqlData(){
-            return "";
-        }
 
     }
 
