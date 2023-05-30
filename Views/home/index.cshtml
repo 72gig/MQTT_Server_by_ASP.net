@@ -44,15 +44,6 @@
             // document.getElementById("hiddenfield1").value = radio;
             location.href = "/ReportInput?type=" + radio + "&startdate=" + startdate + "&enddate=" + enddate
         }
-        function gotoInfrared(){
-            location.href = "/ReportSensor?type=" + "Infrared"
-        }
-        function gotoInfraredUltrasound(){
-            location.href = "/ReportSensor?type=" + "InfraredUltrasound"
-        }
-        function gotoShork(){
-            location.href = "/ReportSensor?type=" + "Shork"
-        }
     </script>
     <script language="C#" runat="server">
         void ReportClicked(object sender, EventArgs e)
@@ -64,50 +55,37 @@
 </head>
 
 <body style="font-size: 30px;">
-    <form style="margin-bottom: 50px;">
-        <!--div style="color: red;">
-            <span style="font-size: 50px;">以報表形式顯示日期中的數量及金額</span><br /><br />
-            <span>在下面的選項選擇要查看的項目和日期<br>會顯示出同時間擁有的單據數量和金額</span>
-        </div>
-        <form id="report_get">
-        <div>
-            <input type="radio" name="report" id="saler" name="sale-report">銷售訂單報表</input>
-            <input type="radio" name="report" id="purchase" name="purchase-report">採購訂單報表</input>
-            <input type="radio" name="report" id="outside" name="outside-report">加工單報表</input>
-        </div-->
-        <!--input type="button" onclick="GetMessage()" value="Get Message" />
-        <p id="ptext"></p>
-        <input type="button" value="Message" id="htmlbutton" onclick="jsShow()" /-->
-        <!--div style="padding-top: 40px;">
-            <label for="start">開始日期:</label>
-            <input type="date" id="startday" name="input-start" /><br>
-            <label for="end">結束日期:</label>
-            <input type="date" id="endday" name="input-end" />
-        </div>
-        <div style="padding-top: 40px;" >
-            <input type="button" value="確認"  style="font-size:30px" onclick="gotoReport()" name="Button"/>
-            <label id = "printerror"></label>
-        </div>
-        <div>
-            <asp:HiddenField id="hiddenfield1" runat="server"/>
-            <asp:HiddenField id="hiddenfield2" runat="server"/>
-            <asp:HiddenField id="hiddenfield3" runat="server"/>
-        </div-->
-        <!--form runat="server">
-            <asp:Button id=Button1 Text="Clickbutton" οnclick="ReportClicked" runat="server" />
-        </form-->
-        <!--/form-->
-        <form id="mtqq_get">
-            <div style="color: red;">
-                <span style="font-size: 50px;">即時顯示感測器得到的資料</span><br /><br />
-                <span>在下面的選項選擇要查看的項目<br>會顯示感測器取得的數量</span>
-            </div>
-            <ul type="circle">
-                <li onclick="gotoInfrared()"><span>紅外線感測器</span><span style="font-size: 20px; color:#999;">給不需要限定距離的，有反應就代表一定執行一次的製程</span></li>
-                <li onclick="gotoInfraredUltrasound()"><span>紅外線感測器+超音波感測器</span><span style="font-size: 20px; color:#999;">給限定距離，有反應不代表一定執行一次的製程</span></li>
-                <li onclick="gotoShork()"><span>震動感測器</span><span style="font-size: 20px; color:#999;">給能夠把感測器貼在機台上的製程</span></li>
-            </ul>
-        </form>
+    <div style="color: red;">
+        <span style="font-size: 60px;">以報表形式顯示日期中的數量及金額</span><br /><br />
+        <span>在下面的選項選擇要查看的項目和日期，會顯示出同時間擁有的單據數量和金額</span>
+    </div>
+    <form class="flex">
+    <div>
+        <input type="radio" name="report" id="saler" name="sale-report">銷售訂單報表</input>
+        <input type="radio" name="report" id="purchase" name="purchase-report">採購訂單報表</input>
+        <input type="radio" name="report" id="outside" name="outside-report">加工單報表</input>
+    </div>
+    <!--input type="button" onclick="GetMessage()" value="Get Message" />
+    <p id="ptext"></p>
+    <input type="button" value="Message" id="htmlbutton" onclick="jsShow()" /-->
+    <div style="padding-top: 40px;">
+        <label for="start">開始日期:</label>
+        <input type="date" id="startday" name="input-start" /><br>
+        <label for="end">結束日期:</label>
+        <input type="date" id="endday" name="input-end" />
+    </div>
+    <div style="padding-top: 40px;" >
+        <input type="button" value="確認"  style="font-size:30px" onclick="gotoReport()" name="Button"/>
+        <label id = "printerror"></label>
+    </div>
+    <div>
+        <asp:HiddenField id="hiddenfield1" runat="server"/>
+        <asp:HiddenField id="hiddenfield2" runat="server"/>
+        <asp:HiddenField id="hiddenfield3" runat="server"/>
+    </div>
+    <!--form runat="server">
+        <asp:Button id=Button1 Text="Clickbutton" οnclick="ReportClicked" runat="server" />
+    </form-->
     </form>
 
 </body>

@@ -13,7 +13,8 @@
     <script type="text/javascript">
         $(document).ready(function() {  //文件完成後再執行
         function DisplayMqttData(){
-          $.get("/ReportSensor/getMqttData", function(){
+          $.get("/ReportSensor/getMqttData", function(data){
+              console.log(data);
               console.log("run getMqttData");
           });
         }

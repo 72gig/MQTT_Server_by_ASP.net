@@ -45,10 +45,6 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.1.1, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[7.0.4, )"
             }
           },
           "imports": [
