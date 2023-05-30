@@ -180,6 +180,7 @@ namespace IActionResultExample.Controllers
             return View();
         }
 
+        [Route("Home/getMqttData")]
         [HttpPost]
         public JsonResult getMqttData(string type){
             Console.WriteLine(type);
