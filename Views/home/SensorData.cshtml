@@ -19,16 +19,17 @@
             cache: false,
             type: "POST",
 
-            success: function (data, textStatus, jqXHR){
+            success: function (data){
               //$.each(result, function(index, element){
               //  $('#infraredView').append(
               //    
               //  );
               //  console.log("SUCCESS" + element);
               //});
-              console.log("SUCCESS" + data);
+              var innervalue = JSON.parse(data);
+              console.log("SUCCESS  " + innervalue.data);
             },
-            error: function (jqXHR, textStatus, errorThrown){
+            error: function (data){
               console.log("FAILED");
             }
           });
@@ -36,7 +37,7 @@
 
         setInterval(function(){
           DisplayMqttData();
-        }, 2000);
+        }, 10000);
         });
 
     </script>

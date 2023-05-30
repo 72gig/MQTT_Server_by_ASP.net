@@ -128,3 +128,4 @@ D:\Users\jaitslin\Desktop\record\python 想法二\非課程 用asp.net core 整�
 D:\Users\jaitslin\Desktop\record\python 想法二\非課程 用asp.net core 整合其它程式語言\obj\Debug\net7.0\ref\非課程 用asp.net core 建立報表.dll
 D:\Users\jaitslin\Desktop\record\python 想法二\非課程 用asp.net core 整合其它程式語言\bin\Debug\net7.0\MQTTnet.dll
 D:\Users\jaitslin\Desktop\record\python 想法二\非課程 用asp.net core 整合其它程式語言\bin\Debug\net7.0\Npgsql.dll
+D:\Users\jaitslin\Desktop\record\python 想法二\非課程 用asp.net core 整合其它程式語言\bin\Debug\net7.0\Newtonsoft.Json.dll

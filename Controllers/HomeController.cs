@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using IActionResultExample.Models;
 using System.Text.Json;
+using Newtonsoft.Json;
+using Npgsql;
 
 namespace IActionResultExample.Controllers
 {
@@ -138,7 +140,7 @@ namespace IActionResultExample.Controllers
             productMostqtyPersent = productMostqty / productAllqty;
 
             // 傳送json
-            var jsonanypartner = JsonSerializer.Serialize(anypartner);
+            var jsonanypartner = System.Text.Json.JsonSerializer.Serialize(anypartner);
             //jsonanypartner = jsonanypartner.Replace("\"","'");
 
             //傳送ViewData資料
@@ -182,9 +184,23 @@ namespace IActionResultExample.Controllers
 
         [Route("Home/getMqttData")]
         [HttpPost]
-        public JsonResult getMqttData(string type){
-            Console.WriteLine(type);
-            return Json(type);
+        public string getMqttData(string type){
+            //預定連線到sql 取得資料後顯示到前端
+            getSqlData();
+
+            List<string> data_ids = new List<string>() {"ABC","BCD"};
+            //Console.WriteLine(type);
+            var returnValue = new {
+                item = 1,
+                data = from s in data_ids
+                        select s
+            };
+            
+            return JsonConvert.SerializeObject(returnValue);
+        }
+
+        private string getSqlData(){
+            return "";
         }
 
     }
