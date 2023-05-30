@@ -175,14 +175,14 @@ namespace IActionResultExample.Controllers
         // 在前端顯示資料
         [Route("ReportSensor/{type?}")]
         public IActionResult SensorData([FromQuery]string? type){
-            
+            Console.WriteLine("run sensordata");
             ViewData["thisreport"] = type;
             return View();
         }
 
-        [HttpPost]
+        [Route("ReportSensor/getMqttData")]
         public JsonResult getMqttData(string type){
-            Console.WriteLine(type);
+            Console.WriteLine("run getMqttData");
             return Json(type);
         }
 
