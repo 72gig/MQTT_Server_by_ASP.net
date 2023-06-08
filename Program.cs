@@ -54,8 +54,8 @@ await using (var cmd = new NpgsqlCommand(
 
 
 
-// 有五個連線, Port 預設1883 改 1882
-var options = new MqttServerOptionsBuilder().WithConnectionBacklog(5).WithDefaultEndpointPort(1882);
+// 預設有五個連線, Port 預設1883
+var options = new MqttServerOptionsBuilder().WithConnectionBacklog(5).WithDefaultEndpointPort(1883);
 
 // 建立Mqtt
 var server = new MqttFactory().CreateMqttServer(options.Build());
@@ -66,7 +66,7 @@ WriteLine("開啟MQTT");
 // 開啟MQTT
 await server.StartAsync();
 //WriteLine("Press any key to stop Server ...");
-// ReadKey();
+//ReadKey();
 
 
 Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)

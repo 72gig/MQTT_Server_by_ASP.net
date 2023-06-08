@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V1ReOCRDSP56Q5xDBQgLwbzll/Pw+1QoD1iJEIByi3cosbzn98sbpqAZ31ZbjZ3GBeheNOdLbQsvuNyx1syyZA==",
+  "dgSpecHash": "kZtx2DxbsOhvM/luQvc1JRtecX0ensbGf2i59RfoB0cahQnnkDWOy+UpiHxo7oteaKULq4vaSGCie6ttpQoZ5w==",
   "success": true,
   "projectFilePath": "D:\\Users\\jaitslin\\Desktop\\record\\python 想法二\\非課程 用asp.net core 整合其它程式語言\\非課程 用asp.net core 建立報表.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\jaitslin\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\jaitslin\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\jaitslin\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\jaitslin\\.nuget\\packages\\mqttnet\\4.2.0.706\\mqttnet.4.2.0.706.nupkg.sha512",
+    "C:\\Users\\jaitslin\\.nuget\\packages\\mqttnet\\4.2.1.781\\mqttnet.4.2.1.781.nupkg.sha512",
     "C:\\Users\\jaitslin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\jaitslin\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
     "C:\\Users\\jaitslin\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",

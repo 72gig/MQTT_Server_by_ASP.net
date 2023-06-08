@@ -326,7 +326,7 @@
           }
         }
       },
-      "MQTTnet/4.2.0.706": {
+      "MQTTnet/4.2.1.781": {
         "type": "package",
         "compile": {
           "lib/net7.0/MQTTnet.dll": {
@@ -1289,10 +1289,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "MQTTnet/4.2.0.706": {
-      "sha512": "WvGqQL9PbnG8wl/uMYTVRYXiZfiJE15M6RYNboGaFMSqPNPWy3iNq0bDPFwKgKFpbriNlSsSXOZQFMvpr5N62A==",
+    "MQTTnet/4.2.1.781": {
+      "sha512": "oKPAoW1Ynukm6ws6P3NmmMlNb3xIlPVf/89WVCkoWOJdz1dYtAdGYRdqe876pVsPru4j0uyU/hKf7iL3NU1r6w==",
       "type": "package",
-      "path": "mqttnet/4.2.0.706",
+      "path": "mqttnet/4.2.1.781",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1300,6 +1300,8 @@
         "lib/net452/MQTTnet.xml",
         "lib/net461/MQTTnet.dll",
         "lib/net461/MQTTnet.xml",
+        "lib/net48/MQTTnet.dll",
+        "lib/net48/MQTTnet.xml",
         "lib/net5.0/MQTTnet.dll",
         "lib/net5.0/MQTTnet.xml",
         "lib/net6.0/MQTTnet.dll",
@@ -1317,7 +1319,7 @@
         "lib/uap10.0.10240/MQTTnet.dll",
         "lib/uap10.0.10240/MQTTnet.pri",
         "lib/uap10.0.10240/MQTTnet.xml",
-        "mqttnet.4.2.0.706.nupkg.sha512",
+        "mqttnet.4.2.1.781.nupkg.sha512",
         "mqttnet.nuspec",
         "nuget.png"
       ]
@@ -2197,7 +2199,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "MQTTnet >= 4.2.0.706",
+      "MQTTnet >= 4.2.1.781",
       "Microsoft.Data.SqlClient >= 5.1.1",
       "Newtonsoft.Json >= 13.0.3",
       "Npgsql >= 7.0.4"
@@ -2242,7 +2244,7 @@
         "dependencies": {
           "MQTTnet": {
             "target": "Package",
-            "version": "[4.2.0.706, )"
+            "version": "[4.2.1.781, )"
           },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
