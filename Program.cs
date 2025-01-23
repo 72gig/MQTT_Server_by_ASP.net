@@ -3,6 +3,7 @@ using MQTTnet;
 using MQTTnet.Server;
 using static System.Console;
 using Npgsql;
+using Microsoft.EntityFrameworkCore;
 
 
 // 開啟 postgresql server, 保存資料
@@ -13,11 +14,11 @@ var password = "p915B3Y4d";
 var dataBase = "mqttuserecord";
 
 // 建立字串
-string[] array = {"Host=", myServer, ";Username=", userName,
+string[] loginArray = {"Host=", myServer, ";Username=", userName,
                   ";Password=", password, ";Database=", dataBase};
 
 // 用join把字串連接起來
-var connString = String.Join("",array);
+var connString = String.Join("",loginArray);
 
 // 連線需要使用的程式碼
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connString);
@@ -45,10 +46,10 @@ await using (var cmd = new NpgsqlCommand(
 
 
 // 預設有三個連線, Port 預設1883
-var options = new MqttServerOptionsBuilder().WithDefaultEndpoint().WithConnectionBacklog(3);
+var mqttOptions = new MqttServerOptionsBuilder().WithDefaultEndpoint().WithConnectionBacklog(3);
 
 // 建立Mqtt
-var server = new MqttFactory().CreateMqttServer(options.Build());
+var server = new MqttFactory().CreateMqttServer(mqttOptions.Build());
 //Add Interceptor for logging incoming messages
 server.InterceptingPublishAsync += Server_InterceptingPublishAsync;
 server.ClientConnectedAsync += Server_GetConnectedClient;
@@ -98,6 +99,11 @@ Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(connString)
+);
+
 var app = builder.Build();
 
 app.UseStaticFiles();

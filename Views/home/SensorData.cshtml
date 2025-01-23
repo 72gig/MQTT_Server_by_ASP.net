@@ -45,92 +45,33 @@
         function gotoIndex(){
             location.href = "/"
         }
+        function gotoSensor(name){
+            location.href = "/ReportSensor?type=" + name
+        }
     </script>
   </head>
   <body>
     <div onclick="gotoIndex()">回到開始頁面</div>
 
-    @if ( (string?)ViewData["thisreport"] == "Infrared"){  // 這裡的[]打錯字不會報錯
-        <h2 style="font-size: 40px;">紅外線感測資料</h2>
-        <form id="form_infrared" style="width:100%; position:absolute; height:500px;">
-            <p>紅外線資料</p>
-            <div id="infraredCount" style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>紅外線資料左</span>
-              
-            </div>
-            <div style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>紅外線資料右</span>
-              <textarea id="infraredView" name="mytext"
-                rows="100"
-                cols="40"
-                required>
-                mtqq資料
-              </textarea>
-            </div>
-        </form>
+      <ul class="menu">
+        <li style = "display: inline;" onclick = gotoSensor("Infrared")>紅外線感測器資料</li>
+        <li style = "display: inline;" onclick = gotoSensor("InfraredUltrasound")>紅外線超音波感測器資料</li>
+        <li style = "display: inline;" onclick = gotoSensor("Shork")>震動感測器資料</li>
+        <li style = "display: inline;" onclick = gotoSensor("Humidity")>濕度感測器資料</li>
+        
+      </ul>
 
+    @if ( (string?)ViewData["thisreport"] == "Infrared"){  // 這裡的[]打錯字不會報錯
+        <h2 style="font-size: 40px;">紅外線感測器資料</h2>
     }
     else if ( (string?)ViewData["thisreport"] == "InfraredUltrasound"){
-        <h2 style="font-size: 40px;">紅外線超音波感測資料</h2>
-        <form id="form_infrared_ultrasound" style="width:100%; position:absolute; height:500px;">
-            <p>紅外線超音波資料</p>
-            <div style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>紅外線超音波資料左</span>
-            </div>
-            <div style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>紅外線超音波資料右</span>
-              <textarea name="mytext"
-                rows="100"
-                cols="40"
-                required>
-                mtqq資料
-              </textarea>
-            </div>
-        </form>
-
+        <h2 style="font-size: 40px;">紅外線超音波感測器資料</h2>
     }
     else if ( (string?)ViewData["thisreport"] == "Shork"){
-        <h2 style="font-size: 40px;">震動感測資料</h2>
-
-        <form id="shork" style="width:100%; position:absolute; height:500px;">
-            <p>震動資料</p>
-            <div style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>震動資料左</span>
-            </div>
-            <div style="width:40%;
-                        height:100%;
-                        display: flex;
-                        float:left;
-                        position: relative;">
-              <span>震動資料右</span>
-              <textarea name="mytext"
-                rows="100"
-                cols="40"
-                required>
-                mtqq資料
-              </textarea>
-            </div>
-        </form>
+        <h2 style="font-size: 40px;">震動感測器資料</h2>
+    }
+    else if ( (string?)ViewData["thisreport"] == "Humidity"){
+        <h2 style="font-size: 40px;">震動感測器資料</h2>
     }
     
   </body>

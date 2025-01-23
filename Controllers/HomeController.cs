@@ -3,6 +3,7 @@ using IActionResultExample.Models;
 using System.Text.Json;
 using Newtonsoft.Json;
 using Npgsql;
+using Microsoft.EntityFrameworkCore;
 
 namespace IActionResultExample.Controllers
 {
@@ -37,6 +38,7 @@ namespace IActionResultExample.Controllers
         public string getMqttData(string type){
             //預定連線到sql 取得資料後顯示到前端
             //getSqlData();
+            private readonly ApplicationDbcontext _context;
 
             List<string> data_ids = new List<string>() {"ABC","BCD"};
             //Console.WriteLine(type);

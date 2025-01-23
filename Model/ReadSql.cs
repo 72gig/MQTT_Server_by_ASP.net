@@ -26,6 +26,13 @@ namespace IActionResultExample.Models
 
     }
 
+    public class SensorItem{
+        [FromQuery]
+        public string? title { get; set; }
+        public string? context { get; set; }
+
+    }
+
     public class SetMqttSql{
         [FromQuery]
         public int? id { get; set; }
@@ -34,15 +41,16 @@ namespace IActionResultExample.Models
 
     }
 
+
     public class ReadMqttSql : SetMqttSql{
         public List<SetMqttSql> Mqttinsql(){
 
             List<SetMqttSql> listSql = new List<SetMqttSql>();
             // 設定變數
-            var myServer = "127.0.0.1";
-            var userName = "postgres";
-            var password = "p915B3Y4d";
-            var dataBase = "testRecord";
+            var myServer = "";
+            var userName = "";
+            var password = "";
+            var dataBase = "";
             // 建立字串
             string[] array = {"Host=", myServer, ";Username=", userName,
                             ";Password=", password, ";Database=", dataBase};
