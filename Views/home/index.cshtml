@@ -53,6 +53,9 @@
         function gotoShork(){
             location.href = "/ReportSensor?type=" + "Shork"
         }
+        function gotoHumidity(){
+            location.href = "/ReportSensor?type=" + "Humidity"
+        }
     </script>
     <script language="C#" runat="server">
         void ReportClicked(object sender, EventArgs e)
@@ -106,7 +109,14 @@
                 <li onclick="gotoInfrared()"><span>紅外線感測器</span><span style="font-size: 20px; color:#999;">給不需要限定距離的，有反應就代表一定執行一次的製程</span></li>
                 <li onclick="gotoInfraredUltrasound()"><span>紅外線感測器+超音波感測器</span><span style="font-size: 20px; color:#999;">給限定距離，有反應不代表一定執行一次的製程</span></li>
                 <li onclick="gotoShork()"><span>震動感測器</span><span style="font-size: 20px; color:#999;">給能夠把感測器貼在機台上的製程</span></li>
+                <li onclick="gotoHumidity()"><span>濕度感測器</span><span style="font-size: 20px; color:#999;">給需要顯示濕度的製程</span></li>
             </ul>
+            <div>
+                <span>增加另外的感測器</span>
+                <input type="text" placeholder="感測器名稱">
+                <input type="text" placeholder="感測器說明">
+                <input type="button" value="新增">
+            </div>
         </form>
     </form>
 

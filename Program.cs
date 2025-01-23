@@ -1,16 +1,6 @@
-using System;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using MQTTnet;
-using MQTTnet.Adapter;
-
-using MQTTnet.Diagnostics;
-using MQTTnet.Protocol;
 using MQTTnet.Server;
-using MQTTnet.Server;
-using MQTTnet;
-using System.Text;
 using static System.Console;
 using Npgsql;
 
@@ -18,9 +8,9 @@ using Npgsql;
 // 開啟 postgresql server, 保存資料
 // 設定變數
 var myServer = "127.0.0.1";
-var userName = "postgres";
+var userName = "serveruser";
 var password = "p915B3Y4d";
-var dataBase = "testRecord";
+var dataBase = "mqttuserecord";
 
 // 建立字串
 string[] array = {"Host=", myServer, ";Username=", userName,
@@ -54,23 +44,31 @@ await using (var cmd = new NpgsqlCommand(
 
 
 
-// 預設有五個連線, Port 預設1883
-var options = new MqttServerOptionsBuilder().WithConnectionBacklog(5).WithDefaultEndpointPort(1883);
+// 預設有三個連線, Port 預設1883
+var options = new MqttServerOptionsBuilder().WithDefaultEndpoint().WithConnectionBacklog(3);
 
 // 建立Mqtt
 var server = new MqttFactory().CreateMqttServer(options.Build());
 //Add Interceptor for logging incoming messages
 server.InterceptingPublishAsync += Server_InterceptingPublishAsync;
+server.ClientConnectedAsync += Server_GetConnectedClient;
 
 WriteLine("開啟MQTT");
 // 開啟MQTT
 await server.StartAsync();
-//WriteLine("Press any key to stop Server ...");
-//ReadKey();
+// WriteLine("Press any key to stop Server ...");
+// ReadKey();
 
+
+Task Server_GetConnectedClient(ClientConnectedEventArgs arg)
+{
+    Console.WriteLine("get connected client");
+    return Task.CompletedTask;
+}
 
 Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)
 {
+    WriteLine("run task message");
     // Convert Payload to string
     var payload = arg.ApplicationMessage?.Payload == null ? null : Encoding.UTF8.GetString(arg.ApplicationMessage?.Payload);
 

@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\非課程 用asp.net core 建立報表.props" />
-</Project>

@@ -1,2 +1,3 @@
 obj/Debug/*
 bin/Debug/*
+obj/*.cache
