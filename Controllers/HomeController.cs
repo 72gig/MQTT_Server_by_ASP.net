@@ -4,11 +4,21 @@ using System.Text.Json;
 using Newtonsoft.Json;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
+using MqttWatch.Data;
+using System.Threading.Tasks;
 
 namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
+        // 有版本問題 不使用
+        //private readonly ApplicationDbContext _context;
+
+        //public HomeController(ApplicationDbContext context)
+        //{
+        //    _context = context;
+        //}
+
         [Route("/")]
         [Route("home")]
         public IActionResult Index()
@@ -36,9 +46,9 @@ namespace IActionResultExample.Controllers
         [Route("Home/getMqttData")]
         [HttpPost]
         public string getMqttData(string type){
-            //預定連線到sql 取得資料後顯示到前端
-            //getSqlData();
-            private readonly ApplicationDbcontext _context;
+            // 有版本問題
+            //var mqttData =  _context.mqtt_table.FromSqlRaw("select * from mqtt_table").ToList();
+            
 
             List<string> data_ids = new List<string>() {"ABC","BCD"};
             //Console.WriteLine(type);
@@ -53,5 +63,4 @@ namespace IActionResultExample.Controllers
 
 
     }
-
 }

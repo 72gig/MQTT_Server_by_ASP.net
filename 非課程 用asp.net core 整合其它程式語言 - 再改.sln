@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "非課程 用asp.net core 建立報表", "非課程 用asp.net core 建立報表.csproj", "{A091CF5D-5189-AF49-E048-A4AC4ECC45BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A091CF5D-5189-AF49-E048-A4AC4ECC45BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A091CF5D-5189-AF49-E048-A4AC4ECC45BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A091CF5D-5189-AF49-E048-A4AC4ECC45BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A091CF5D-5189-AF49-E048-A4AC4ECC45BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EABA483-3455-447C-A361-95058B2E7199}
+	EndGlobalSection
+EndGlobal

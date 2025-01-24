@@ -4,6 +4,9 @@ using MQTTnet.Server;
 using static System.Console;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
+using MqttWatch.Data;
+using System.IO;
+using System.Text.Json;
 
 
 // 開啟 postgresql server, 保存資料
@@ -35,7 +38,8 @@ await using (var cmd = new NpgsqlCommand(
     @"create table if not exists mqtt_table (
         Key_id serial primary key,
         Topic text not null,
-        Payload text not null);", conn)){
+        Payload text not null,
+        Record_time time not null);", conn)){
     await cmd.ExecuteNonQueryAsync();
 }
 
@@ -86,12 +90,37 @@ Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)
 
 
     // 寫資料到 Postgresql
-    using (var cmd = new NpgsqlCommand("insert into mqtt_table (Topic, Payload) values (@t,@p)", conn)){
+    using (var cmd = new NpgsqlCommand("insert into mqtt_table (Topic, Payload, record_time) values (@t,@p,@r)", conn)){
 
         cmd.Parameters.AddWithValue("t", arg.ApplicationMessage?.Topic);
-        cmd.Parameters.AddWithValue("p", arg.ApplicationMessage?.Payload);
+        cmd.Parameters.AddWithValue("p", HexStringToString(arg.ApplicationMessage?.Payload));
+        cmd.Parameters.AddWithValue("r", DateTime.Now);
         cmd.ExecuteNonQuery();
     }
+
+    static string HexStringToString(byte[] hex){
+        // 將byte改為 string
+        return Encoding.ASCII.GetString(hex);
+    }
+
+    // 保存到 Controller 可以讀取的地方
+    var JsonResult = new List<Dictionary<string, object>>();
+    using(var readCmd = new NpgsqlCommand("select * from mqtt_table where record_time >= @d::date", conn)){
+        readCmd.Parameters.AddWithValue("d", DateTime.Now.Date);
+        using(var read = readCmd.ExecuteReader()){
+            while (read.Read()){
+                // 遍歷每行的每個欄位
+                var row = new Dictionary<string, object>();
+                for (int i = 0; i < read.FieldCount; i++)
+                {
+                    row[read.GetName(i)] = read.GetValue(i);
+                }
+                JsonResult.Add(row);
+            }
+        }
+    }
+    string JsonData = JsonSerializer.Serialize(JsonResult, new JsonSerializerOptions { WriteIndented = true});
+    File.WriteAllText("output.json", JsonData);
 
     return Task.CompletedTask;
 }
@@ -100,9 +129,10 @@ Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connString)
-);
+// 有版本問題 不使用
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseNpgsql(connString)
+//);
 
 var app = builder.Build();
 
@@ -114,6 +144,15 @@ IHostApplicationLifetime lifetime = app.Lifetime;
 lifetime.ApplicationStopped.Register(() => {
     conn.Close();
     WriteLine("關閉資料庫連線");
+    try {
+        if(File.Exists("output.json")) {
+            WriteLine("即將刪除暫存檔案");
+            File.Delete("output.json");
+        }
+    }
+    catch (Exception ex) {
+        WriteLine("在刪除檔案時出現問題 {ex.Message}");
+    }
 });
 
 app.Run();
