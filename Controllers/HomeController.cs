@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using IActionResultExample.Models;
-using System.Text.Json;
+using System.Text;
 using Newtonsoft.Json;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
 using MqttWatch.Data;
 using System.Threading.Tasks;
+using System.Security.AccessControl;
+using System.IO;
 
 namespace IActionResultExample.Controllers
 {
@@ -49,16 +51,23 @@ namespace IActionResultExample.Controllers
             // 有版本問題
             //var mqttData =  _context.mqtt_table.FromSqlRaw("select * from mqtt_table").ToList();
             
-
-            List<string> data_ids = new List<string>() {"ABC","BCD"};
-            //Console.WriteLine(type);
-            var returnValue = new {
-                item = 1,
-                data = from s in data_ids
-                        select s
-            };
+            var readValue = "[]";
+            List<MqttTable> Jsonitems = new List<MqttTable>();
+            if(System.IO.File.Exists("output.json")){
+                readValue = System.IO.File.ReadAllText("output.json");
+            }
+            try{
+                Jsonitems = JsonConvert.DeserializeObject<List<MqttTable>>(readValue);
+                Jsonitems.RemoveAll(Jsonitems => Jsonitems.topic != type);
+            }
+            catch(Exception ex){
+                Console.WriteLine(ex);
+            }
             
-            return JsonConvert.SerializeObject(returnValue);
+            
+            var returnValue = JsonConvert.SerializeObject(Jsonitems);
+
+            return returnValue;
         }
 
 

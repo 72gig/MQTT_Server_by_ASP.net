@@ -20,14 +20,7 @@
             type: "POST",
 
             success: function (data){
-              //$.each(result, function(index, element){
-              //  $('#infraredView').append(
-              //    
-              //  );
-              //  console.log("SUCCESS" + element);
-              //});
-              var innervalue = JSON.parse(data);
-              console.log("SUCCESS  " + innervalue.data);
+              console.log("SUCCESS  " + data);
             },
             error: function (data){
               console.log("FAILED");
