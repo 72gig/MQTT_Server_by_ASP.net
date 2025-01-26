@@ -21,6 +21,17 @@
 
             success: function (data){
               console.log("SUCCESS  " + data);
+              if(data == "[]"){
+                document.getElementById('mqttPrint').textContent = "開啟網頁後尚無使用此頻道";
+              }
+              else{
+                data = JSON.parse(data); 
+                let dataLine = "";
+                data.forEach(item =>{
+                  dataLine = dataLine + `輸入時間: ${item.record_time} 傳入資料: ${item.payload}\n`
+                });
+                document.getElementById('mqttPrint').textContent = dataLine;
+              }
             },
             error: function (data){
               console.log("FAILED");
@@ -66,6 +77,9 @@
     else if ( (string?)ViewData["thisreport"] == "Humidity"){
         <h2 style="font-size: 40px;">震動感測器資料</h2>
     }
+    <textarea id="mqttPrint" name="mqttPrint" rows="30" cols="80" readonly>
+
+    </textarea>
     
   </body>
 
