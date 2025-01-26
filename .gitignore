@@ -1,3 +1,3 @@
-obj/Debug/*
 bin/Debug/*
-obj/*.cache
+obj/*
+*.csproj.nuget.dgspec.json
