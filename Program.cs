@@ -8,20 +8,23 @@ using MqttWatch.Data;
 using System.IO;
 using System.Text.Json;
 
+// 把資料庫相關的參數寫在程式碼的方式不安全
+// // 開啟 postgresql server, 保存資料
+// // 設定變數
+// var myServer = "";
+// var userName = "";
+// var password = "";
+// var dataBase = "";
+// 
+// // 建立字串
+// string[] loginArray = {"Host=", myServer, ";Username=", userName,
+//                   ";Password=", password, ";Database=", dataBase};
+// 
+// // 用join把字串連接起來
+// var connString = String.Join("",loginArray);
 
-// 開啟 postgresql server, 保存資料
-// 設定變數
-var myServer = "127.0.0.1";
-var userName = "serveruser";
-var password = "p915B3Y4d";
-var dataBase = "mqttuserecord";
-
-// 建立字串
-string[] loginArray = {"Host=", myServer, ";Username=", userName,
-                  ";Password=", password, ";Database=", dataBase};
-
-// 用join把字串連接起來
-var connString = String.Join("",loginArray);
+// 存在環境變數
+var connString = Environment.GetEnvironmentVariable("connectionStringSetting");
 
 // 連線需要使用的程式碼
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connString);
