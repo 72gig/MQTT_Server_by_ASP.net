@@ -77,14 +77,12 @@ Task Server_InterceptingPublishAsync(InterceptingPublishEventArgs arg)
 
 
     WriteLine(
-        " TimeStamp: {0} -- Message: ClientId = {1}, Topic = {2}, Payload = {3}, QoS = {4}, Retain-Flag = {5}",
+        " Time: {0} -- Message: ClientId = {1}, Topic = {2}, Payload = {3}",
 
         DateTime.Now,
         arg.ClientId,
         arg.ApplicationMessage?.Topic,
-        payload,
-        arg.ApplicationMessage?.QualityOfServiceLevel,
-        arg.ApplicationMessage?.Retain);
+        payload);
 
 
     // 寫資料到 Postgresql
