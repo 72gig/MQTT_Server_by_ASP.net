@@ -47,11 +47,6 @@ await using (var cmd = new NpgsqlCommand(
 }
 
 
-// 開啟 sql server, 保存資料
-// 目前不設定
-
-
-
 // 預設有三個連線, Port 預設1883
 var mqttOptions = new MqttServerOptionsBuilder().WithDefaultEndpoint().WithConnectionBacklog(3);
 
